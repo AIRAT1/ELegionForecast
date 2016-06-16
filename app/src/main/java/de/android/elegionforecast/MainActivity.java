@@ -10,6 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -47,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            String[] data = {
+                    "Berlin",
+                    "Muenchen",
+                    "Hamburg",
+                    "Koeln",
+                    "Duesseldorf"
+            };
+            List<String> forecast = new ArrayList<>(Arrays.asList(data));
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
