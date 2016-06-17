@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static class MainActivityFragment extends Fragment {
+        ArrayAdapter<String> forecastAdapter;
         public MainActivityFragment() {
         }
 
@@ -59,7 +62,14 @@ public class MainActivity extends AppCompatActivity {
                     "Duesseldorf"
             };
             List<String> forecast = new ArrayList<>(Arrays.asList(data));
+            forecastAdapter = new ArrayAdapter<>(
+                    getActivity(),
+                    R.layout.list_item_forecast,
+                    R.id.list_item_forecast_text_view,
+                    forecast);
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            ListView listView = (ListView)rootView.findViewById(R.id.list_view_forecast);
+            listView.setAdapter(forecastAdapter);
             return rootView;
         }
     }
